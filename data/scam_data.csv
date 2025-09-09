@@ -1,2 +1,8 @@
 message,scam_score
 "Win a free iPhone!",95
+text,label
+"Congratulations! You won a prize. Click http://bit.ly/claim",1
+"Your invoice for April is attached",0
+"URGENT: Verify your bank details or account will be closed",1
+"Team, meeting on Monday 10AM",0
+
