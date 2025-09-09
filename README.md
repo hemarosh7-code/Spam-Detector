@@ -1,2 +1,2 @@
 # Spam-Detector
-To create spam score based on the user input
+Generates spam score based on the user input
