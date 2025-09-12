@@ -14,7 +14,7 @@ EPOCHS = 3
 SEED = 42
 
 df = pd.read_csv(DATA_CSV)
-train_df, test_df = train_test_split(df, test_size=0.15, stratify=df.label, random_state=SEED)
+train_df, test_df = train_test_split(df, test_size=0.2, stratify=df.label, random_state=SEED)
 train_df, val_df = train_test_split(train_df, test_size=0.1765, stratify=train_df.label, random_state=SEED)
 
 tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_NAME)
