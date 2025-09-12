@@ -27,6 +27,10 @@ except FileNotFoundError:
     print(f"Error: The file '{DATA_CSV}' was not found.")
     print("Please ensure 'spam_data.csv' is in the same directory as this script.")
     exit()
+df = pd.read_csv(DATA_CSV)
+
+# Clean NaNs
+df = df.dropna(subset=["label", "text"]).reset_index(drop=True)
 
 # Split the data into training, validation, and test sets.
 # The test_size is set to a more robust value to avoid 'ValueError'.
