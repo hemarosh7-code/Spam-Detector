@@ -23,7 +23,6 @@ try:
 
     # Convert the 'spam' and 'ham' string labels to numerical 1s and 0s
     df['label'] = df['label'].map({'spam': 1, 'ham': 0})
-a
 except FileNotFoundError:
     print(f"Error: The file '{DATA_CSV}' was not found.")
     print("Please ensure 'spam.csv' is in the same directory as this script.")
