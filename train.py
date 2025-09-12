@@ -23,7 +23,7 @@ try:
 
     # Convert the 'spam' and 'ham' string labels to numerical 1s and 0s
     df['label'] = df['label'].map({'spam': 1, 'ham': 0})
-
+a
 except FileNotFoundError:
     print(f"Error: The file '{DATA_CSV}' was not found.")
     print("Please ensure 'spam.csv' is in the same directory as this script.")
@@ -54,11 +54,13 @@ test_ds = Dataset.from_dict({**test_enc, "labels": test_df['label'].tolist()})
 model = DistilBertForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=2)
 
 # --- FIX APPLIED HERE ---
-# Check for GPU availability and move the model to the GPU if one is found
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model.to(device)
-print(f"Using device: {device}")
-# The Trainer class automatically handles moving data batches to the correct device, so no further changes are needed for the data itself.
+# The Trainer class automatically handles moving the model and data to the GPU.
+# Manual device placement is not needed and can cause errors.
+# The following lines have been removed:
+# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+# model.to(device)
+# print(f"Using device: {device}")
+
 
 training_args = TrainingArguments(
     output_dir=OUTDIR,
