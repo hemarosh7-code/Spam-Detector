@@ -9,7 +9,7 @@ import torch
 # --- Constants ---
 MODEL_NAME = "distilbert-base-uncased"
 # Updated to read from the provided spam.csv file in the current directory
-DATA_CSV = "spam.csv" 
+DATA_CSV = "spam_data.csv" 
 OUTDIR = "hf_model"
 MAX_LEN = 128
 BATCH = 16
@@ -25,7 +25,7 @@ try:
     df['label'] = df['label'].map({'spam': 1, 'ham': 0})
 except FileNotFoundError:
     print(f"Error: The file '{DATA_CSV}' was not found.")
-    print("Please ensure 'spam.csv' is in the same directory as this script.")
+    print("Please ensure 'spam_data.csv' is in the same directory as this script.")
     exit()
 
 # Split the data into training, validation, and test sets.
