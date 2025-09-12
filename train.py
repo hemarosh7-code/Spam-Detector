@@ -9,7 +9,7 @@ import torch
 # --- Constants ---
 MODEL_NAME = "distilbert-base-uncased"
 # Updated to read from the provided spam.csv file in the current directory
-DATA_CSV = "spam_data.csv" 
+DATA_CSV = "data/spam_data.csv" 
 OUTDIR = "hf_model"
 MAX_LEN = 128
 BATCH = 16
