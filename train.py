@@ -4,6 +4,7 @@ from datasets import Dataset
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification, Trainer, TrainingArguments
 from sklearn.model_selection import train_test_split
 import os
+import torch
 
 # --- Constants ---
 MODEL_NAME = "distilbert-base-uncased"
@@ -51,6 +52,13 @@ test_ds = Dataset.from_dict({**test_enc, "labels": test_df['label'].tolist()})
 # --- Model Training ---
 # Load the pre-trained DistilBERT model for sequence classification
 model = DistilBertForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=2)
+
+# --- FIX APPLIED HERE ---
+# Check for GPU availability and move the model to the GPU if one is found
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
+print(f"Using device: {device}")
+# The Trainer class automatically handles moving data batches to the correct device, so no further changes are needed for the data itself.
 
 training_args = TrainingArguments(
     output_dir=OUTDIR,
